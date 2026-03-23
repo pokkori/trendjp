@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import { supabase } from '@/lib/supabase';
 import TrendCard from '@/components/TrendCard';
 import CategoryFilter from '@/components/CategoryFilter';
+import StreakBadge from '@/components/StreakBadge';
 
 export const revalidate = 3600; // ISR: 1時間ごとに再生成
 
@@ -85,6 +86,7 @@ export default async function HomePage({
       <section className="px-4 py-12 text-center">
         <h1 className="text-4xl font-bold text-white mb-4">TrendJP</h1>
         <p className="text-blue-200 text-lg mb-8">海外バズを、今すぐ日本語で。</p>
+        <StreakBadge />
       </section>
 
       {/* カテゴリフィルター */}

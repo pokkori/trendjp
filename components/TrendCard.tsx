@@ -1,5 +1,6 @@
 'use client';
 import Link from 'next/link';
+import BookmarkButton from '@/components/BookmarkButton';
 
 interface TrendCardProps {
   article: {
@@ -23,13 +24,27 @@ const CATEGORY_COLORS: Record<string, string> = {
   other: '#6b7280',
 };
 
+const CATEGORY_ICONS: Record<string, string> = {
+  technology: 'M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
+  gadget: 'M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z',
+  business: 'M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z',
+  science: 'M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z',
+  entertainment: 'M15 10l4.553-2.069A1 1 0 0121 8.87v6.26a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z',
+  other: 'M7 20l4-16m2 16l4-16M6 9h14M4 15h14',
+};
+
 export default function TrendCard({ article, isMock }: TrendCardProps) {
   const categoryColor = CATEGORY_COLORS[article.trends.category] || CATEGORY_COLORS.other;
   const sourceColor = article.trends.source === 'hackernews' ? '#f97316' : '#6b7280';
+  const categoryIconPath = CATEGORY_ICONS[article.trends.category] || CATEGORY_ICONS.other;
 
   const articleUrl = `https://trendjp.vercel.app/trends/${article.slug}`;
   const xShareText = encodeURIComponent(`${article.title_ja} #TrendJP #テクノロジー`);
   const xShareUrl = `https://twitter.com/intent/tweet?text=${xShareText}&url=${encodeURIComponent(articleUrl)}`;
+
+  const pubDate = new Date(article.published_at);
+  const today = new Date();
+  const isNew = pubDate.toDateString() === today.toDateString();
 
   return (
     <article
@@ -42,12 +57,24 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
         className="block p-6"
       >
         {/* バッジ行 */}
-        <div className="flex gap-2 mb-3">
+        <div className="flex gap-2 mb-3 flex-wrap">
+          {isNew && (
+            <span
+              className="text-xs font-bold px-2 py-1 rounded-full text-white animate-pulse"
+              style={{ backgroundColor: '#ef4444' }}
+              aria-label="今日公開の新着記事"
+            >
+              NEW
+            </span>
+          )}
           <span
-            className="text-xs font-semibold px-2 py-1 rounded-full text-white"
+            className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full text-white"
             style={{ backgroundColor: categoryColor }}
             aria-label={`カテゴリ: ${article.trends.category}`}
           >
+            <svg width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" d={categoryIconPath} />
+            </svg>
             {article.trends.category}
           </span>
           <span
@@ -80,8 +107,8 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
         </div>
       </Link>
 
-      {/* Xシェアボタン */}
-      <div className="px-6 pb-4">
+      {/* アクションボタン行 */}
+      <div className="px-6 pb-4 flex items-center gap-1">
         <a
           href={xShareUrl}
           target="_blank"
@@ -102,6 +129,7 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
           </svg>
           シェア
         </a>
+        <BookmarkButton slug={article.slug} title={article.title_ja} />
       </div>
     </article>
   );

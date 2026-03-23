@@ -39,6 +39,9 @@ export const metadata: Metadata = {
     description: '海外SNS・ニュースのバズを自動検知し、AI が日本語解説記事として自動公開。',
     images: ['https://trendjp.vercel.app/api/og'],
   },
+  alternates: {
+    canonical: 'https://trendjp.vercel.app',
+  },
 };
 
 const adsenseId = process.env.NEXT_PUBLIC_ADSENSE_CLIENT_ID;
@@ -55,6 +58,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             strategy="afterInteractive"
           />
         )}
+        <Script
+          id="website-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "name": "TrendJP",
+              "url": "https://trendjp.vercel.app",
+              "description": "海外SNS・ニュースのバズを自動検知し、AIが日本語解説記事として自動公開。最新グローバルトレンドを毎時更新。",
+              "potentialAction": {
+                "@type": "SearchAction",
+                "target": "https://trendjp.vercel.app/?category={search_term_string}",
+                "query-input": "required name=search_term_string"
+              }
+            })
+          }}
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className="min-h-full flex flex-col antialiased"

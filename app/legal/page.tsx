@@ -1,9 +1,20 @@
 export default function LegalPage() {
   return (
-    <div className="min-h-screen bg-gray-950 text-gray-100 py-16 px-4">
+    <main
+      className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 py-16 px-4"
+      aria-label="特定商取引法に基づく表記"
+    >
       <div className="max-w-3xl mx-auto">
-        <h1 className="text-3xl font-bold mb-8 text-white">特定商取引法に基づく表記</h1>
-        <div className="space-y-4 text-gray-300">
+        <h1 className="text-3xl font-bold mb-8 text-white" id="legal-title">特定商取引法に基づく表記</h1>
+        <section
+          className="rounded-2xl p-6"
+          style={{
+            background: 'rgba(255,255,255,0.07)',
+            backdropFilter: 'blur(10px)',
+            border: '1px solid rgba(255,255,255,0.15)',
+          }}
+          aria-labelledby="legal-title"
+        >
           <table className="w-full border-collapse">
             <tbody>
               {[
@@ -18,15 +29,15 @@ export default function LegalPage() {
                 ["サービス提供時期", "会員登録不要・即時利用可能"],
                 ["返品・キャンセル", "デジタルサービスのため返品不可"],
               ].map(([key, val]) => (
-                <tr key={key} className="border-b border-gray-800">
-                  <td className="py-3 pr-4 font-semibold text-gray-400 w-1/3">{key}</td>
-                  <td className="py-3">{val}</td>
+                <tr key={key} className="border-b border-white/10">
+                  <td className="py-3 pr-4 font-semibold text-blue-200 w-1/3">{key}</td>
+                  <td className="py-3 text-blue-100">{val}</td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
+        </section>
       </div>
-    </div>
+    </main>
   );
 }

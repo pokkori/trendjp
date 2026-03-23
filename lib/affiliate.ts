@@ -24,6 +24,17 @@ const KEYWORD_PRODUCT_MAP: Record<string, { asin: string; text: string; commissi
     サイバーセキュリティ: { asin: 'B09Z3VNQCJ', text: 'セキュリティ入門', commissionRate: 3 },
     ビットコイン: { asin: 'B08K3L9QZF', text: '仮想通貨入門', commissionRate: 3 },
     韓国: { asin: 'B0CHMWNHSP', text: '話題の韓国コスメ', commissionRate: 3 },
+    // 海外バズ系高単価キーワード追加
+    スタートアップ資金調達: { asin: 'B00KPKUJK8', text: 'スタートアップの教科書', commissionRate: 3 },
+    副業: { asin: 'B0CHMWNHSP', text: '副業完全マニュアル', commissionRate: 3 },
+    フリーランス: { asin: 'B08PJGQY1K', text: 'フリーランス入門', commissionRate: 3 },
+    ブロックチェーン: { asin: 'B08K3L9QZF', text: 'ブロックチェーン入門', commissionRate: 3 },
+    NFT: { asin: 'B08K3L9QZF', text: '暗号資産・NFT入門', commissionRate: 3 },
+    ChatGPT: { asin: 'B0C5GFLK9S', text: 'ChatGPT完全活用ガイド', commissionRate: 3 },
+    Midjourney: { asin: 'B0C5GFLK9S', text: 'AI画像生成ガイド', commissionRate: 3 },
+    自動化: { asin: 'B0CHMWNHSP', text: '業務自動化の教科書', commissionRate: 3 },
+    SaaS: { asin: 'B00KPKUJK8', text: 'SaaS起業ガイド', commissionRate: 3 },
+    ノーコード: { asin: 'B00KPKUJK8', text: 'ノーコード開発入門', commissionRate: 3 },
   };
 
 export function buildAmazonLink(

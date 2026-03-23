@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 px-4 py-12">
+    <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 px-4 py-12" aria-label="TrendJPについて">
       <article className="max-w-2xl mx-auto">
         <h1 className="text-3xl font-bold text-white mb-8">TrendJPについて</h1>
 

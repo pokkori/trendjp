@@ -45,6 +45,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: 'daily',
       priority: 0.7,
     },
+    {
+      url: `${baseUrl}/category/science`,
+      changeFrequency: 'daily',
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/category/other`,
+      changeFrequency: 'daily',
+      priority: 0.6,
+    },
   ];
 
   // 動的記事ページ（最新1,000件）
