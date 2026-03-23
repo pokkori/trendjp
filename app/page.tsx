@@ -23,22 +23,22 @@ export default async function HomePage({
   const params = await searchParams;
   const category = params?.category;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let query: any = supabase
-    .from('articles')
-    .select(
-      'id, slug, title_ja, excerpt_ja, published_at, keywords, trends!inner(source, category, original_score)'
-    )
-    .eq('published', true)
-    .order('published_at', { ascending: false })
-    .limit(12);
-
-  if (category) {
-    query = query.eq('trends.category', category);
-  }
-
   let articles: ArticleRow[] = [];
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let query: any = supabase
+      .from('articles')
+      .select(
+        'id, slug, title_ja, excerpt_ja, published_at, keywords, trends!inner(source, category, original_score)'
+      )
+      .eq('published', true)
+      .order('published_at', { ascending: false })
+      .limit(12);
+
+    if (category) {
+      query = query.eq('trends.category', category);
+    }
+
     const { data } = await query;
     articles = (data as ArticleRow[]) || [];
   } catch {
