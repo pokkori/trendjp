@@ -6,7 +6,7 @@ import StreakBadge from '@/components/StreakBadge';
 import StatsCounter from '@/components/StatsCounter';
 import NewsletterSection from '@/components/NewsletterSection';
 
-export const revalidate = 3600; // ISR: 1時間ごとに再生成
+export const revalidate = 600; // ISR: 10分ごとに再生成
 
 interface ArticleRow {
   id: string;

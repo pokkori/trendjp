@@ -67,6 +67,41 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
               NEW
             </span>
           )}
+          {/* HNスコア ホット度バッジ */}
+          {article.trends.original_score >= 500 && (
+            <span
+              className="flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full text-white"
+              style={{
+                background: 'rgba(239,68,68,0.2)',
+                border: '1px solid rgba(239,68,68,0.5)',
+                backdropFilter: 'blur(8px)',
+                color: '#fca5a5',
+              }}
+              aria-label={`ホット記事: スコア ${article.trends.original_score}`}
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C8.5 7 7 10 9 14c-1.5-1-2-2.5-2-4C4 13 3 16 5 19c1.5 2 4 3 7 3s5.5-1 7-3c2-3 1-6-2-9-1 2-2 3-3 3 2-4 0-7-2-11z" />
+              </svg>
+              HOT
+            </span>
+          )}
+          {article.trends.original_score >= 200 && article.trends.original_score < 500 && (
+            <span
+              className="flex items-center gap-1 text-xs font-bold px-2 py-1 rounded-full"
+              style={{
+                background: 'rgba(245,158,11,0.15)',
+                border: '1px solid rgba(245,158,11,0.4)',
+                backdropFilter: 'blur(8px)',
+                color: '#fcd34d',
+              }}
+              aria-label={`急上昇中: スコア ${article.trends.original_score}`}
+            >
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+              </svg>
+              急上昇
+            </span>
+          )}
           <span
             className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full text-white"
             style={{ backgroundColor: categoryColor }}

@@ -4,14 +4,16 @@ export default function ProgrammingSchoolBlock() {
     {
       name: 'テックキャンプ',
       description: '未経験からエンジニア転職を目指すなら国内最大級のテックキャンプ。転職保証付き。',
-      url: 'https://tech-camp.in/?ref=trendjp',
+      // ※ A8.netまたは直リンクに差し替え必須
+      url: 'https://tech-camp.in/?utm_source=trendjp&utm_medium=affiliate&utm_campaign=article',
       badge: '転職保証',
       badgeColor: '#10b981',
     },
     {
       name: 'RUNTEQ',
       description: 'Webエンジニア特化のRUNTEQ。実践的なカリキュラムでポートフォリオを構築。',
-      url: 'https://runteq.jp/?ref=trendjp',
+      // ※ A8.netまたは直リンクに差し替え必須
+      url: 'https://runteq.jp/?utm_source=trendjp&utm_medium=affiliate&utm_campaign=article',
       badge: '実践特化',
       badgeColor: '#8b5cf6',
     },

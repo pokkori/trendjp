@@ -41,6 +41,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://trendjp.vercel.app',
+    types: {
+      'application/rss+xml': 'https://trendjp.vercel.app/feed.xml',
+    },
   },
 };
 

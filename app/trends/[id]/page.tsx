@@ -159,9 +159,31 @@ export default async function ArticlePage({ params }: PageProps) {
       <article className="max-w-2xl mx-auto px-4 py-12" aria-label={article.title_ja}>
         <header className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-4 leading-tight">{article.title_ja}</h1>
-          <p className="text-blue-300 text-sm">
-            {new Date(article.published_at).toLocaleDateString('ja-JP')}
-          </p>
+          <div className="flex items-center gap-3 flex-wrap">
+            <p className="text-blue-300 text-sm">
+              {new Date(article.published_at).toLocaleDateString('ja-JP')}
+            </p>
+            {article.content_ja && (
+              <span
+                className="flex items-center gap-1 text-blue-400 text-sm"
+                aria-label={`推定読了時間: 約${Math.ceil(article.content_ja.length / 400)}分`}
+              >
+                <svg
+                  width="14"
+                  height="14"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  aria-hidden="true"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+                約{Math.ceil(article.content_ja.length / 400)}分で読めます
+              </span>
+            )}
+          </div>
         </header>
 
         <ArticleContent content={article.content_ja} />
