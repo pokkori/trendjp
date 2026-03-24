@@ -158,7 +158,7 @@ export default async function HomePage({
         <StreakBadge />
         {/* カウントアップ統計 */}
         <Suspense fallback={null}>
-          <StatsCounter />
+          <StatsCounter articleCount={articles.length > 0 ? articles.length : undefined} />
         </Suspense>
       </section>
 

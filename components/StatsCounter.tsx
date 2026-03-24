@@ -8,11 +8,9 @@ interface StatItem {
   prefix?: string;
 }
 
-const STATS: StatItem[] = [
-  { label: '海外バズ記事', target: 2400, suffix: '件+' },
-  { label: '毎日更新', target: 24, suffix: '時間対応' },
-  { label: '先行者利益チャンス', target: 6, suffix: '時配信', prefix: '毎朝' },
-];
+interface StatsCounterProps {
+  articleCount?: number;
+}
 
 function useCountUp(target: number, duration: number = 1200, start: boolean = false) {
   const [count, setCount] = useState(0);
@@ -52,9 +50,15 @@ function StatBox({ item, animate }: { item: StatItem; animate: boolean }) {
   );
 }
 
-export default function StatsCounter() {
+export default function StatsCounter({ articleCount }: StatsCounterProps) {
   const [animate, setAnimate] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  const STATS: StatItem[] = [
+    { label: '海外バズ記事', target: articleCount && articleCount > 0 ? articleCount : 2400, suffix: '件+' },
+    { label: '毎日更新', target: 24, suffix: '時間対応' },
+    { label: '先行者利益チャンス', target: 6, suffix: '時配信', prefix: '毎朝' },
+  ];
 
   useEffect(() => {
     const observer = new IntersectionObserver(

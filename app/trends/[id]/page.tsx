@@ -7,6 +7,7 @@ import AffiliateBlock from '@/components/AffiliateBlock';
 import ProgrammingSchoolBlock from '@/components/ProgrammingSchoolBlock';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleJsonLd from '@/components/ArticleJsonLd';
+import { AdBanner } from '@/components/AdBanner';
 import { AffiliateLink } from '@/lib/affiliate';
 
 export const revalidate = 86400; // 24時間（記事は変更なし）
@@ -188,6 +189,11 @@ export default async function ArticlePage({ params }: PageProps) {
 
         <ArticleContent content={article.content_ja} />
 
+        {/* 広告（記事本文直後） */}
+        <div className="my-6" aria-label="記事本文直後の広告">
+          <AdBanner slot="content" />
+        </div>
+
         {/* プログラミングスクールアフィリエイト（記事中間） */}
         <ProgrammingSchoolBlock />
 
@@ -224,6 +230,10 @@ export default async function ArticlePage({ params }: PageProps) {
         className="max-w-2xl mx-auto px-4 pb-16"
         aria-label="関連記事"
       >
+        {/* 広告（関連記事上部） */}
+        <div className="mb-6" aria-label="関連記事上部の広告">
+          <AdBanner slot="sidebar" />
+        </div>
         <h2 className="text-xl font-bold text-white mb-4">関連記事</h2>
         <div className="flex flex-col gap-4">
           {displayRelated.map((rel) => (

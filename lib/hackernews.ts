@@ -11,7 +11,7 @@ export interface HNStory {
 
 export async function fetchTopHNStories(limit: number = 20): Promise<HNStory[]> {
   const response = await fetch(
-    `${HN_API_BASE}/search_by_date?tags=story&hitsPerPage=${limit}&numericFilters=points>100`,
+    `${HN_API_BASE}/search?tags=story&hitsPerPage=${limit}&numericFilters=points>150`,
     { next: { revalidate: 3600 } }
   );
   if (!response.ok) throw new Error(`HN API error: ${response.status}`);
@@ -25,5 +25,6 @@ export function categorizeHNStory(title: string, _url: string): string {
   if (/\b(iphone|android|gadget|device|hardware)\b/.test(titleLower)) return 'gadget';
   if (/\b(startup|funding|ipo|revenue|business)\b/.test(titleLower)) return 'business';
   if (/\b(science|research|study|nasa|space)\b/.test(titleLower)) return 'science';
+  if (/\b(game|movie|music|film|sport|entertainment|netflix|streaming)\b/.test(titleLower)) return 'entertainment';
   return 'other';
 }
