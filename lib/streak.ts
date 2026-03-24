@@ -111,3 +111,30 @@ export function getUnlockedFeatures(streak: number, totalDays: number) {
     premiumContent: totalDays >= 30,
   };
 }
+
+/**
+ * TrendJP専用シンプルストリーク取得
+ * - localStorage の trendjp_streak キーを使用
+ * - 初回・リセット時は1を返す
+ */
+export function getStreak(): number {
+  if (typeof window === 'undefined') return 0;
+  try {
+    const data = JSON.parse(
+      localStorage.getItem('trendjp_streak') || '{"count":0,"lastVisit":""}'
+    );
+    const today = new Date().toDateString();
+    const yesterday = new Date(Date.now() - 86400000).toDateString();
+    if (data.lastVisit === today) return data.count;
+    if (data.lastVisit === yesterday) {
+      const updated = { count: data.count + 1, lastVisit: today };
+      localStorage.setItem('trendjp_streak', JSON.stringify(updated));
+      return updated.count;
+    }
+    const reset = { count: 1, lastVisit: today };
+    localStorage.setItem('trendjp_streak', JSON.stringify(reset));
+    return 1;
+  } catch {
+    return 0;
+  }
+}

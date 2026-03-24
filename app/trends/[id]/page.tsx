@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { supabase } from '@/lib/supabase';
 import ArticleContent from '@/components/ArticleContent';
 import AffiliateBlock from '@/components/AffiliateBlock';
+import ProgrammingSchoolBlock from '@/components/ProgrammingSchoolBlock';
 import ShareButtons from '@/components/ShareButtons';
 import ArticleJsonLd from '@/components/ArticleJsonLd';
 import { AffiliateLink } from '@/lib/affiliate';
@@ -164,6 +165,9 @@ export default async function ArticlePage({ params }: PageProps) {
         </header>
 
         <ArticleContent content={article.content_ja} />
+
+        {/* プログラミングスクールアフィリエイト（記事中間） */}
+        <ProgrammingSchoolBlock />
 
         {/* 元記事リンク（著作権対策） */}
         <section

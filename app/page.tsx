@@ -4,6 +4,7 @@ import TrendCard from '@/components/TrendCard';
 import CategoryFilter from '@/components/CategoryFilter';
 import StreakBadge from '@/components/StreakBadge';
 import StatsCounter from '@/components/StatsCounter';
+import NewsletterSection from '@/components/NewsletterSection';
 
 export const revalidate = 3600; // ISR: 1時間ごとに再生成
 
@@ -160,6 +161,9 @@ export default async function HomePage({
           <StatsCounter />
         </Suspense>
       </section>
+
+      {/* ニュースレター登録 */}
+      <NewsletterSection />
 
       {/* カテゴリフィルター */}
       <Suspense>
