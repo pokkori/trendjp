@@ -17,6 +17,20 @@ export default function Footer() {
         >
           About
         </Link>
+        <Link
+          href="/privacy"
+          className="text-blue-400 hover:text-white text-sm transition-colors"
+          aria-label="プライバシーポリシーを確認する"
+        >
+          プライバシーポリシー
+        </Link>
+        <Link
+          href="/legal"
+          className="text-blue-400 hover:text-white text-sm transition-colors"
+          aria-label="特定商取引法に基づく表記・法的情報を確認する"
+        >
+          特定商取引法
+        </Link>
       </nav>
       <p className="text-blue-500 text-xs">
         &copy; {new Date().getFullYear()} TrendJP. All rights reserved.

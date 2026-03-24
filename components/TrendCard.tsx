@@ -141,7 +141,7 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
   if (isMock) {
     return (
       <article
-        className="rounded-2xl backdrop-blur-sm bg-white/[0.07] border border-white/20 shadow-lg transition-all duration-300 hover:shadow-2xl hover:bg-white/[0.12]"
+        className="rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg transition-all duration-300 hover:shadow-2xl hover:bg-white/10"
         aria-label={`記事: ${article.title_ja}`}
       >
         <button
@@ -199,7 +199,6 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
             aria-label={`「${article.title_ja}」をXでシェアする`}
             className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg text-white/80 text-xs font-medium transition-all duration-200 hover:text-white hover:bg-white/10"
             style={{ minHeight: '44px', minWidth: '44px' }}
-            onClick={(e) => e.preventDefault()}
           >
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
               <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -214,7 +213,7 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
 
   return (
     <article
-      className="rounded-2xl backdrop-blur-sm bg-white/[0.07] border border-white/20 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/[0.12]"
+      className="rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/10"
       aria-label={`記事: ${article.title_ja}`}
     >
       <Link

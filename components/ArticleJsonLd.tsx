@@ -20,6 +20,12 @@ export default function ArticleJsonLd({ title, description, url, publishedAt }: 
       '@type': 'Organization',
       name: 'TrendJP',
       url: 'https://trendjp.vercel.app',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://trendjp.vercel.app/logo.png',
+        width: 192,
+        height: 192,
+      },
     },
   };
 
