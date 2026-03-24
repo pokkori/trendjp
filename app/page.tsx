@@ -149,17 +149,28 @@ export default async function HomePage({
     <main className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900">
       {/* ヒーローセクション */}
       <section className="px-4 py-14 text-center" aria-label="ヒーローセクション">
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">TrendJP</h1>
-        <p className="text-blue-200 text-lg md:text-xl mb-6">海外バズを、今すぐ日本語で。</p>
-        <p className="text-blue-300 text-sm mb-8 max-w-xl mx-auto leading-relaxed">
-          Hacker News・Redditのバズトレンドを自動検知し、AIが即時日本語解説。
-          先行者利益を毎朝6時にお届けします。
-        </p>
-        <StreakBadge />
+        <div
+          className="max-w-2xl mx-auto mb-10 px-6 py-8 rounded-2xl"
+          style={{
+            background: 'rgba(255,255,255,0.08)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
+            border: '1px solid rgba(255,255,255,0.15)',
+            borderRadius: '16px',
+          }}
+        >
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">TrendJP</h1>
+          <p className="text-blue-200 text-lg md:text-xl mb-6">海外バズを、今すぐ日本語で。</p>
+          <p className="text-blue-300 text-sm mb-8 max-w-xl mx-auto leading-relaxed">
+            Hacker News・Redditのバズトレンドを自動検知し、AIが即時日本語解説。
+            先行者利益を毎朝6時にお届けします。
+          </p>
+          <StreakBadge />
         {/* カウントアップ統計 */}
         <Suspense fallback={null}>
           <StatsCounter articleCount={articles.length > 0 ? articles.length : undefined} />
         </Suspense>
+        </div>
       </section>
 
       {/* ニュースレター登録 */}
@@ -201,10 +212,13 @@ export default async function HomePage({
         aria-label="TrendJPの仕組みと収益モデル"
       >
         <div
-          className="rounded-2xl p-8 backdrop-blur-md"
+          className="rounded-2xl p-8"
           style={{
-            background: 'rgba(255,255,255,0.05)',
+            background: 'rgba(255,255,255,0.08)',
+            backdropFilter: 'blur(12px)',
+            WebkitBackdropFilter: 'blur(12px)',
             border: '1px solid rgba(255,255,255,0.15)',
+            borderRadius: '16px',
           }}
         >
           <h2 className="text-2xl font-bold text-white mb-6 text-center">
@@ -239,10 +253,13 @@ export default async function HomePage({
             ].map((item) => (
               <div
                 key={item.step}
-                className="flex flex-col items-center text-center p-4 rounded-xl backdrop-blur-sm"
+                className="flex flex-col items-center text-center p-4 rounded-xl"
                 style={{
-                  background: 'rgba(255,255,255,0.04)',
-                  border: '1px solid rgba(255,255,255,0.1)',
+                  background: 'rgba(255,255,255,0.08)',
+                  backdropFilter: 'blur(12px)',
+                  WebkitBackdropFilter: 'blur(12px)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  borderRadius: '16px',
                 }}
               >
                 <span
@@ -260,10 +277,13 @@ export default async function HomePage({
 
           {/* アフィリエイト収益シミュレーション */}
           <div
-            className="rounded-xl p-6 backdrop-blur-sm"
+            className="rounded-xl p-6"
             style={{
-              background: 'rgba(251,191,36,0.07)',
-              border: '1px solid rgba(251,191,36,0.25)',
+              background: 'rgba(251,191,36,0.1)',
+              backdropFilter: 'blur(12px)',
+              WebkitBackdropFilter: 'blur(12px)',
+              border: '1px solid rgba(251,191,36,0.3)',
+              borderRadius: '16px',
             }}
             aria-label="アフィリエイト収益シミュレーション"
           >

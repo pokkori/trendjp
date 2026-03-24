@@ -141,7 +141,14 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
   if (isMock) {
     return (
       <article
-        className="rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg transition-all duration-300 hover:shadow-2xl hover:bg-white/10"
+        className="rounded-2xl shadow-lg transition-all duration-300 hover:shadow-2xl"
+        style={{
+          background: 'rgba(255,255,255,0.08)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(255,255,255,0.15)',
+          borderRadius: '16px',
+        }}
         aria-label={`記事: ${article.title_ja}`}
       >
         <button
@@ -213,7 +220,14 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
 
   return (
     <article
-      className="rounded-2xl backdrop-blur-md bg-white/5 border border-white/10 shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:bg-white/10"
+      className="rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-2xl"
+      style={{
+        background: 'rgba(255,255,255,0.08)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: '1px solid rgba(255,255,255,0.15)',
+        borderRadius: '16px',
+      }}
       aria-label={`記事: ${article.title_ja}`}
     >
       <Link
