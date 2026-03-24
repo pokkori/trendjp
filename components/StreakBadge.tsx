@@ -29,7 +29,7 @@ export default function StreakBadge() {
       <svg width="18" height="18" viewBox="0 0 24 24" fill="#fbbf24" aria-hidden="true">
         <path d="M12 2c0 0-4 4-4 9a4 4 0 008 0c0-2-1-4-1-4s-1 2-3 2c-1.5 0-2-1-2-2 0-2 2-5 2-5zm0 14a2 2 0 010-4 2 2 0 010 4z" />
       </svg>
-      <span className="text-yellow-400 font-bold text-sm">{streak}日連続チェック中🔥</span>
+      <span className="text-yellow-400 font-bold text-sm">{streak}日連続チェック中</span>
       {milestone && <span className="text-yellow-300 text-xs ml-1">{milestone}</span>}
     </div>
   );
