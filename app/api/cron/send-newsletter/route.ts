@@ -4,7 +4,10 @@ export const runtime = 'nodejs';
 export const maxDuration = 60;
 
 // HTML メールテンプレート生成
-function buildEmailHtml(articles: { title_ja: string; excerpt_ja: string; slug: string }[]): string {
+function buildEmailHtml(
+  articles: { title_ja: string; excerpt_ja: string; slug: string }[],
+  email: string
+): string {
   const articleRows = articles
     .map(
       (a, i) => `
@@ -64,9 +67,17 @@ function buildEmailHtml(articles: { title_ja: string; excerpt_ja: string; slug: 
           <tr>
             <td style="background:#0a1929; padding:24px 32px; border-radius:0 0 16px 16px; border:1px solid #1e3a5f; border-top:none; text-align:center;">
               <p style="margin:0 0 8px; color:#64748b; font-size:12px;">
-                配信停止は
-                <a href="https://trendjp.vercel.app" style="color:#3b82f6;">TrendJP</a>
-                よりご対応ください。
+                このメールは <strong style="color:#94a3b8;">${email}</strong> 宛に送信されています。
+              </p>
+              <p style="margin:0 0 12px; color:#64748b; font-size:12px;">
+                配信停止をご希望の場合は
+                <a
+                  href="https://trendjp.vercel.app/api/newsletter/unsubscribe?email=${encodeURIComponent(email)}&token=unsubscribe"
+                  style="color:#3b82f6; text-decoration:underline;"
+                >
+                  こちらをクリックして配信解除
+                </a>
+                してください。
               </p>
               <p style="margin:0; color:#475569; font-size:11px;">
                 TrendJP - 海外バズを今すぐ日本語で
@@ -149,11 +160,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ ok: true, sent: 0, reason: 'No articles in last 24h' });
     }
 
-    const html = buildEmailHtml(articles);
     const subject = `今日の海外バズTOP${articles.length} | TrendJP`;
 
     // 3. 各購読者にResendでメール送信（失敗しても続行）
     for (const subscriber of subscribers) {
+      const html = buildEmailHtml(articles, subscriber.email);
       try {
         const sendRes = await fetch('https://api.resend.com/emails', {
           method: 'POST',

@@ -16,6 +16,19 @@ interface TrendCardProps {
   isMock?: boolean;
 }
 
+const CATEGORY_JA: Record<string, string> = {
+  technology: 'テクノロジー',
+  programming: 'プログラミング',
+  ai: 'AI・機械学習',
+  business: 'ビジネス',
+  startup: 'スタートアップ',
+  entertainment: 'エンタメ',
+  science: 'サイエンス',
+  security: 'セキュリティ',
+  gadget: 'ガジェット',
+  other: 'その他',
+};
+
 const CATEGORY_COLORS: Record<string, string> = {
   technology: '#3b82f6',
   gadget: '#8b5cf6',
@@ -97,12 +110,12 @@ export default function TrendCard({ article, isMock }: TrendCardProps) {
       <span
         className="flex items-center gap-1 text-xs font-semibold px-2 py-1 rounded-full text-white"
         style={{ backgroundColor: categoryColor }}
-        aria-label={`カテゴリ: ${article.trends.category}`}
+        aria-label={`カテゴリ: ${CATEGORY_JA[article.trends.category] ?? article.trends.category}`}
       >
         <svg width="12" height="12" viewBox="0 0 24 24" stroke="currentColor" fill="none" strokeWidth="2" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" d={categoryIconPath} />
         </svg>
-        {article.trends.category}
+        {CATEGORY_JA[article.trends.category] ?? article.trends.category}
       </span>
       <span
         className="text-xs font-semibold px-2 py-1 rounded-full text-white"

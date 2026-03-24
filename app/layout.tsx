@@ -80,6 +80,59 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           }}
           strategy="beforeInteractive"
         />
+        <Script
+          id="faqpage-jsonld"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "TrendJPとは何ですか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Hacker News等の海外テックコミュニティのトレンド記事をAIが日本語に翻訳・解説するメディアです。最新のグローバルテクノロジー動向を日本語で素早くキャッチアップできます。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "記事はどのように生成されますか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "世界最大のテックコミュニティHacker Newsでスコア150点以上の話題をAIが日本語解説記事に変換しています。Anthropic社のClaude Haikuを使用して、元記事の内容を正確に日本語で解説しています。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "更新頻度はどのくらいですか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "10分ごとに最新トレンドを確認し、バズ記事が検出されると自動で日本語記事が生成されます。毎時更新で常に最新のグローバルトレンドをお届けします。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "無料で使えますか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "はい、TrendJPは完全無料でご利用いただけます。メール通知はニュースレター登録で受け取れます。登録も無料です。"
+                  }
+                },
+                {
+                  "@type": "Question",
+                  "name": "どのカテゴリの記事がありますか？",
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "テクノロジー・AI・プログラミング・スタートアップ・ビジネス・エンターテインメント等のカテゴリをカバーしています。海外の最新テックトレンドを幅広く取り扱っています。"
+                  }
+                }
+              ]
+            })
+          }}
+          strategy="beforeInteractive"
+        />
       </head>
       <body
         className="min-h-full flex flex-col antialiased"

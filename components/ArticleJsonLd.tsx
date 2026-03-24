@@ -13,6 +13,8 @@ export default function ArticleJsonLd({ title, description, url, publishedAt }: 
     description,
     url,
     datePublished: publishedAt,
+    dateModified: publishedAt,
+    image: `https://trendjp.vercel.app/api/og?title=${encodeURIComponent(title)}`,
     author: { '@type': 'Organization', name: 'TrendJP' },
     publisher: {
       '@type': 'Organization',

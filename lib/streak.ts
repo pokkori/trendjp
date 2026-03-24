@@ -114,26 +114,20 @@ export function getUnlockedFeatures(streak: number, totalDays: number) {
 
 /**
  * TrendJP専用シンプルストリーク取得
- * - localStorage の trendjp_streak キーを使用
- * - 初回・リセット時は1を返す
+ * - localStorage の trendjp_streak キーを使用（updateStreak と同じキー・同じ型）
+ * - StreakData 形式（lastPlayDate: 'YYYY-MM-DD'）を読み取る
+ * - 初回・リセット時は updateStreak を呼び出して count=1 で返す
  */
 export function getStreak(): number {
   if (typeof window === 'undefined') return 0;
   try {
-    const data = JSON.parse(
-      localStorage.getItem('trendjp_streak') || '{"count":0,"lastVisit":""}'
-    );
-    const today = new Date().toDateString();
-    const yesterday = new Date(Date.now() - 86400000).toDateString();
-    if (data.lastVisit === today) return data.count;
-    if (data.lastVisit === yesterday) {
-      const updated = { count: data.count + 1, lastVisit: today };
-      localStorage.setItem('trendjp_streak', JSON.stringify(updated));
-      return updated.count;
-    }
-    const reset = { count: 1, lastVisit: today };
-    localStorage.setItem('trendjp_streak', JSON.stringify(reset));
-    return 1;
+    const data = loadStreak('trendjp');
+    const today = getToday();
+    // 今日すでに更新済みか昨日以前ならそのまま count を返す
+    // 実際の更新は StreakBadge.tsx の updateStreak('trendjp') が担う
+    if (data.lastPlayDate === today) return data.count;
+    // 未更新（初回訪問等）は loadStreak が返す DEFAULT_STREAK（count=0）のためそのまま返す
+    return data.count;
   } catch {
     return 0;
   }

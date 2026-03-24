@@ -117,7 +117,7 @@ export default function AboutPage() {
             {[
               {
                 label: 'スコア基準',
-                desc: 'HackerNews スコア 100点以上の記事のみを対象とします。高い注目度を獲得したコンテンツを優先します。',
+                desc: 'HackerNews スコア 150点以上の記事のみを対象とします。高い注目度を獲得したコンテンツを優先します。',
               },
               {
                 label: 'カテゴリ基準',
