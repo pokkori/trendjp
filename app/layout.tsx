@@ -13,6 +13,7 @@ const notoSansJP = Noto_Sans_JP({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://trendjp.vercel.app'),
   title: {
     default: 'TrendJP - 海外バズを今すぐ日本語で',
     template: '%s | TrendJP',
